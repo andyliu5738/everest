@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane layoutX="0.0" layoutY="0.0" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="-1.0" prefWidth="-1.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Main.controller">
+  <center>
+    <StackPane prefHeight="-1.0" prefWidth="-1.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+      <children>
+        <BorderPane fx:id="touchPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+          <bottom>
+            <Button fx:id="touchStopStart" mnemonicParsing="false" onAction="#startTouch" prefHeight="25.0" prefWidth="157.0" text="Start Touch Control" BorderPane.alignment="CENTER">
+              <BorderPane.margin>
+                <Insets bottom="25.0" />
+              </BorderPane.margin>
+            </Button>
+          </bottom>
+          <center>
+            <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+              <children>
+                <Button fx:id="stop" mnemonicParsing="false" onAction="#startTouch" prefHeight="50.0" prefWidth="100.0" text="Stop" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Button fx:id="forward" mnemonicParsing="false" onAction="#startTouch" prefHeight="50.0" prefWidth="100.0" text="Forward" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <Button fx:id="left" mnemonicParsing="false" onAction="#startTouch" prefHeight="50.0" prefWidth="100.0" text="Left" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Button fx:id="right" mnemonicParsing="false" onAction="#startTouch" prefHeight="50.0" prefWidth="100.0" text="Right" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Button fx:id="backward" mnemonicParsing="false" onAction="#startTouch" prefHeight="50.0" prefWidth="100.0" text="Backward" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </center>
+        </BorderPane>
+        <BorderPane fx:id="voicePane" prefHeight="200.0" prefWidth="200.0" visible="false">
+          <bottom>
+            <Button fx:id="voiceStart" mnemonicParsing="false" onAction="#startRecording" prefHeight="51.0" prefWidth="141.0" text="Start Recording" BorderPane.alignment="CENTER">
+              <BorderPane.margin>
+                <Insets bottom="100.0" />
+              </BorderPane.margin>
+            </Button>
+          </bottom>
+          <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+              <children>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                    <ImageView fitHeight="143.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@sound.png" />
+                      </image>
+                    </ImageView>
+                  </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="308.0" text="Press &quot;Start Recording&quot; to begin the speech detection!" textAlignment="CENTER" />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </center>
+        </BorderPane>
+        <BorderPane fx:id="handPane" prefHeight="200.0" prefWidth="200.0" snapToPixel="true" visible="false" StackPane.alignment="CENTER">
+          <bottom>
+            <Button id="handFrame" fx:id="frameStart" contentDisplay="CENTER" minWidth="-1.0" mnemonicParsing="false" onAction="#startFrames" prefHeight="47.0" prefWidth="77.0" text="Start" textAlignment="CENTER" BorderPane.alignment="CENTER">
+              <BorderPane.margin>
+                <Insets bottom="50.0" />
+              </BorderPane.margin>
+            </Button>
+          </bottom>
+          <center>
+            <ImageView id="handFrame" fx:id="cameraFrame" fitHeight="305.7476043701172" fitWidth="400.5402949520241" pickOnBounds="true" preserveRatio="true" scaleX="1.0" scaleY="1.0" scaleZ="1.0" BorderPane.alignment="CENTER">
+              <image>
+                <Image url="@webcam.png" />
+              </image>
+            </ImageView>
+          </center>
+          <StackPane.margin>
+            <Insets />
+          </StackPane.margin>
+        </BorderPane>
+        <BorderPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0">
+          <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <VBox prefHeight="113.0" prefWidth="398.0">
+                  <children>
+                    <TextField fx:id="address" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="Socket Server Address" text="192.168.0.107" />
+                    <TextField fx:id="port" maxWidth="-Infinity" prefWidth="200.0" promptText="Socket Server Port" text="1234" />
+                    <Button fx:id="socketButton" mnemonicParsing="false" onAction="#setSocket" text="Set Socket Settings" />
+                  </children>
+                </VBox>
+              </children>
+            </HBox>
+          </bottom>
+          <center>
+            <Label text="Select a control option on the left side!">
+              <font>
+                <Font name="System Bold" size="20.0" />
+              </font>
+            </Label>
+          </center>
+        </BorderPane>
+      </children>
+    </StackPane>
+  </center>
+  <left>
+    <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="100.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+      <children>
+        <ImageView fitHeight="58.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" smooth="true" style="">
+          <image>
+            <Image url="@lsus.png" />
+          </image>
+          <VBox.margin>
+            <Insets top="-200.0" />
+          </VBox.margin>
+        </ImageView>
+        <Button fx:id="main" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-1.0" mnemonicParsing="false" onAction="#buttonClick" prefHeight="-1.0" text="Main" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+          <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x1" />
+          </VBox.margin>
+        </Button>
+        <Button fx:id="hand" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttonClick" text="Hand" VBox.margin="$x1" />
+        <Button fx:id="touch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttonClick" text="Touch" VBox.margin="$x1" />
+        <Button fx:id="voice" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttonClick" text="Voice" textAlignment="CENTER" VBox.margin="$x1" VBox.vgrow="ALWAYS" />
+        <Separator prefHeight="13.0" prefWidth="53.0" />
+      </children>
+    </VBox>
+  </left>
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="User">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Profile" />
+            <MenuItem mnemonicParsing="false" text="Logout" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Settings">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Hand Options" />
+            <MenuItem mnemonicParsing="false" text="Touch Options" />
+            <MenuItem mnemonicParsing="false" text="Voice Options" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+            <MenuItem mnemonicParsing="false" text="Data" />
+            <MenuItem mnemonicParsing="false" text="How to?" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>

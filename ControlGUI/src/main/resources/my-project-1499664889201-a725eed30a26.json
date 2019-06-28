@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "my-project-1499664889201",
+  "private_key_id": "a725eed30a26ef9adcc3a5556c02f7c3f9367fe4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtdDEAoLrFjfPU\nZwpjwhkOBQrNSnKlJA+dFsZ09k+Dt3cOMFuYX/Mnx72IH4O4/bdFy3xNj3TEf91B\nIMkwYiT8e6KVQvNR9BUU/dh56wPPGLZSWFTW6oSRofP7ZurQMq16ezVYAqZpLrcf\nVf1ZTJ8k9m2vFvnEZlBNTaMBKXkCE1fbbDcIGdvnpmwjTpGmgkcx6crEmfuWqmoB\npFjTWyFWX+/MgfPIMXB2yyyb0a+MJ3WuIJts/PC0la35T9itv8qhlwo67L2yZJoH\nW4lhReNR7rFSNy/kYLR+0lWkW9HtrnaW+HucKK9121FlIFwsoZtBMAImv1/hx0N0\nhLFciJpxAgMBAAECggEAAjerOAoAqULkfEbUSVczZnb7tDPV8wowJZQjdbOqa5F+\nX6Y68t/oe2M10euD4xW3Re373lVNqwTEHtoySECQ9CYJJjsEt6ZVA1TayMrk3GfB\nTkcxJSLlY/k75cRjOcXUFZiao3qRMboLqZu5++4bVhJ3xNZt21bALbom3H5xEheI\nzefDWH1n/BQH9bv1Jd8wZjbTQdExmru9/JM1sGAq6qbwWrfgdmkxEJR/YmAr/jI1\nW96FhvhEktJ+fTkMCxd8DBmxWo+oYRaexjHZrteg6D+d1IZsHyo4/ElRtOJvkDM2\npGwQtQgagFCpPe4OjvEVAB2haTcuIpv3S0fRgYEcAQKBgQDmo4XBlFPbuatsP3YW\nTtDFAyszVodjEuXPBX/VcpuWHk33QyJuNhxHeWBKncxiduGimcI2nQAdwX1t0pp9\nNDzAF0kNHejCm3IhjhRyLAhyycd5CyKtD0cdlseHTaQUbibJ/sVlroJs0i1YmwyB\nvNvwcuMVSwosdNVOnrhjD0T8gQKBgQDAhupNp0iUh2ZjhSZ752cTPx/rAVzeTeKi\nhtpwQUT62c0eRmMVClIF3tfsko1ClPtoAvAfM1qdWVTbqSrPl5mcAc2e7SR9Osxr\nsnq3DbqWgjAOhtzoMotCUTYLIcNd+ObMoseLIMj7KmCmd3zdPOf1GI9fysXZGRd3\ne/uhKPhl8QKBgGZBGYw5tvQz3Uyg1joNt4GhZgXc1ymVt02Ropt/tHtZ9DcsDJfQ\nZblKluZ+D5+YFXGBuhl8ghCvOGz4coYQIt8Hc9vc5tVhFbjKxUXZP+WkkEuaJEWW\nAHGd59iVE6n7LDdiPSJXvHuCs5gVJfZfRSPVy9gk7N3I7slslVNV8cABAoGAKb0W\nDr+1fH3eNLUpIrOIJSQKR2iEOa2o9JNHyA5eZgPR9D5OPMGABsXJCgC7nzOtTV9V\nr23ytyomu3hxT5AOPUQmz82Zm4yjxLVs5UKUsQyIXp3eRniuuDHjBYbMVBMh9jtU\nB1WUPN9zFKPS7iPGJdytOJc9TVOjQsQeSVIYiAECgYB/evcMnHh7ljvHsBXZ2gda\nq5kbeUQWAfOWrbr51s2yCgIbF22nNbYSHrk0jg7U85k5Vln37HvCFWNmUBMGKhtd\nQz7uUkkwayssQJITzgFmVxDi3/jzPlSUlaroyU/nS0uYOSAlrC0CnfCfXkGwoIRm\nBAe87gnYHKqG/NvxbBdY/w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "javavoicedetect@my-project-1499664889201.iam.gserviceaccount.com",
+  "client_id": "113283403448955394127",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/javavoicedetect%40my-project-1499664889201.iam.gserviceaccount.com"
+}
