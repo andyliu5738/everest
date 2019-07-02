@@ -1,6 +1,7 @@
                          package Main;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.concurrent.Executors;
@@ -39,6 +40,7 @@ public class controller {
     @FXML private Button stop;
     @FXML private Button touchStopStart;
     @FXML private Label movingInfo;
+    @FXML private Label words;
     @FXML private TextField address;
     @FXML private TextField port;
     @FXML private Pane mainPane;
@@ -47,6 +49,7 @@ public class controller {
     @FXML private Pane voicePane;
     @FXML private ImageView cameraFrame;
     private CameraDetection camera;
+    //private Voice voiceObject;
     private GoogleSpeechTest voiceObject;
     private TouchControl touchControl;
     private SocketClient socket = new SocketClient("::1",1234);
@@ -77,6 +80,12 @@ public class controller {
                 cameraOn = false;
             }
         }
+        if(buttonId != 3 && voiceRecording){
+            System.out.println("Stopping voice...");
+            voiceObject.endDetection();
+            voiceStart.setText("Start Recording");
+            voiceRecording = false;
+        }
         if(buttonId == 1){
             Image i = new Image("/webcam.png");
             cameraFrame.setImage(i);
@@ -90,40 +99,46 @@ public class controller {
         }
     }
 
-    public void startRecording() {
-        if (!voiceRecording) {
-            voiceStart.setText("Stop Recording");
+    public void startRecording() throws IOException {
+        if(socket.isOpen()){
+            if (!voiceRecording) {
+                voiceStart.setText("Stop Recording");
 
-            voiceRecording = true;
-            voiceObject = new GoogleSpeechTest();
-            voiceRecord = new Thread(voiceObject);
-            voiceRecord.start();
-        } else {
-            System.out.println("Stopping camera...");
-            voiceObject.endDetection();
-            voiceStart.setText("Start Recording");
-            voiceRecording = false;
+                voiceRecording = true;
+                voiceObject = new GoogleSpeechTest(socket);
+                voiceRecord = new Thread(voiceObject);
+                //voiceObject = new Voice(words);
+                //voiceRecord = new Thread(voiceObject);
+                voiceRecord.start();
+            } else {
+                System.out.println("Stopping voice...");
+                voiceObject.endDetection();
+                voiceStart.setText("Start Recording");
+                voiceRecording = false;
 
+            }
         }
     }
 
     public void startFrames() { //Also closes frames
-        if (cameraOn) {
-            if(camera.stopCamera()){
-                frameStart.setText("Start");
-                cameraOn = false;
+        if(socket.isOpen()){
+            if (cameraOn) {
+                if(camera.stopCamera()){
+                    frameStart.setText("Start");
+                    cameraOn = false;
+                }
+            } else {
+                frameStart.setText("Stop");
+                cameraOn = true;
+                camera = new CameraDetection(cameraFrame, socket);
+                camera.startCamera();
             }
-        } else {
-            frameStart.setText("Stop");
-            cameraOn = true;
-            camera = new CameraDetection(cameraFrame, socket);
-            camera.startCamera();
         }
     }
 
     public void startTouch(ActionEvent e) {
         
-        if(socket.testConn()){
+        if(socket.isOpen()){
             String buttonId = e.toString().split("id=")[1].split(",")[0];
             socket.sendData(buttonId);
 //            if (buttonId.equals("touchStopStart")) {

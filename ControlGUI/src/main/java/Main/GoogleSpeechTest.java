@@ -36,8 +36,9 @@ public class GoogleSpeechTest implements Runnable{
     public void run(){
         startRecording();
     }
-    public GoogleSpeechTest() {
-        socket = new SocketClient("192.168.0.118",50051);
+    public GoogleSpeechTest(SocketClient socket) {
+        ///socket = new SocketClient("192.168.0.118",50051);
+        this.socket = socket;
     }
  
     public void startRecording(){       //Target data line
@@ -62,7 +63,7 @@ public class GoogleSpeechTest implements Runnable{
                 if (!AudioSystem.isLineSupported(info)) {
                         System.out.println("Microphone is not available");
                         //setText("Microphone: Not available", mic);
-                        System.exit(0);
+                        //System.exit(0);
                 }
 
                 //Get the target data line
@@ -74,35 +75,35 @@ public class GoogleSpeechTest implements Runnable{
                 //Audio Input Stream
                 audio = new AudioInputStream(microphone);
 
-        } catch (Exception ex) {
-                ex.printStackTrace();
+        } catch (LineUnavailableException ex) {
         }
 
         //Send audio from Microphone to Google Servers and return Text
         try (SpeechClient client = SpeechClient.create()) {
 
-                ResponseObserver<StreamingRecognizeResponse> responseObserver = new ResponseObserver<StreamingRecognizeResponse>() {
-
-                        public void onStart(StreamController controller) {
-                                System.out.println("Started....");
-                                //setText("Recording: True",rec);
-                        }
-
-                        public void onResponse(StreamingRecognizeResponse response) {
-                                System.out.println("Speech detected:" + response.getResults(0).getAlternatives(0).getTranscript());
-                                
-                                socket.sendData(response.getResults(0).getAlternatives(0).getTranscript());
-                                //setText(response.getResults(0).toString(),detect);
-                        }
-
-                        public void onComplete() {
-                                System.out.println("Complete");
-                        }
-
-                        public void onError(Throwable t) {
-                                System.err.println(t);
-                        }
-                };
+                ResponseObserver<StreamingRecognizeResponse> responseObserver;
+            responseObserver = new ResponseObserver<StreamingRecognizeResponse>() {
+                
+                public void onStart(StreamController controller) {
+                    System.out.println("Started....");
+                    //setText("Recording: True",rec);
+                }
+                
+                public void onResponse(StreamingRecognizeResponse response) {
+                    System.out.println("Speech detected:" + response.getResults(0).getAlternatives(0).getTranscript());
+                    
+                    socket.sendData(response.getResults(0).getAlternatives(0).getTranscript());
+                    //setText(response.getResults(0).toString(),detect);
+                }
+                
+                public void onComplete() {
+                    System.out.println("Complete");
+                }
+                
+                public void onError(Throwable t) {
+                    System.err.println(t);
+                }
+            };
 
                 ClientStream<StreamingRecognizeRequest> clientStream = client.streamingRecognizeCallable().splitCall(responseObserver);
 
@@ -160,9 +161,7 @@ public class GoogleSpeechTest implements Runnable{
     }	
     
     public void endDetection(){
-        if(socket.isOpen()){
-            socket.closeConnection();
-        }
+
         this.microphone.close();
         System.out.println("No longer recording...");
     }
